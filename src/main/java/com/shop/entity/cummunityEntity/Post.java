@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Entity
-@Table(name="post")
 @Getter
 @Setter
 @ToString
@@ -21,12 +22,14 @@ public class Post {
 
     @Column(nullable = false)
     private String content;
+    @Column(nullable = false)
+    private Long memberId;
 
     @Column(nullable = false)
-    private String userName;
+    private LocalDateTime dateTime;
 
     @Column(nullable = false)
-    private String DateTime;
+    private Long like;
 
     @Column(nullable = false)
     private Long views;
@@ -34,20 +37,22 @@ public class Post {
     public Post() {
     }
 
-    public Post(Long id, String title, String content, String userName, String dateTime, Long views) {
-        this.id = id;
+    public Post(String title, String content, Long memberId, LocalDateTime dateTime, Long like, Long views) {
         this.title = title;
         this.content = content;
-        this.userName = userName;
-        DateTime = dateTime;
+        this.memberId = memberId;
+        this.dateTime = dateTime;
+        this.like = like;
         this.views = views;
     }
 
-    public Post(String title, String content, String userName, String dateTime, Long views) {
+    public Post(Long id, String title, String content, Long memberId, LocalDateTime dateTime, Long like, Long views) {
+        this.id = id;
         this.title = title;
         this.content = content;
-        this.userName = userName;
-        DateTime = dateTime;
+        this.memberId = memberId;
+        this.dateTime = dateTime;
+        this.like = like;
         this.views = views;
     }
 }

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @ToString
@@ -13,30 +15,33 @@ public class PostReadResponse {
     private Long id;
     private String title;
     private String content;
-    private String userName;
-    private String dateTime;
+    private Long memberId;
+    private LocalDateTime dataTime;
+    private Long like;
     private Long views;
+
+    public static PostReadResponse fromEntity(Post p){
+        return new PostReadResponse(
+                p.getId(),
+                p.getTitle(),
+                p.getContent(),
+                p.getMemberId(),
+                p.getDateTime(),
+                p.getLike(),
+                p.getViews()
+        );
+    }
 
     public PostReadResponse() {
     }
 
-    public PostReadResponse(Long id, String title, String content, String userName, String dateTime, Long views) {
+    public PostReadResponse(Long id, String title, String content, Long memberId, LocalDateTime dataTime, Long like, Long views) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.userName = userName;
-        this.dateTime = dateTime;
+        this.memberId = memberId;
+        this.dataTime = dataTime;
+        this.like = like;
         this.views = views;
-    }
-
-    public static  PostReadResponse fromEntity(Post post){
-        return new PostReadResponse(
-                post.getId(),
-                post.getTitle(),
-                post.getContent(),
-                post.getUserName(),
-                post.getDateTime(),
-                post.getViews()
-        );
     }
 }

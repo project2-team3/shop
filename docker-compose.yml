@@ -7,3 +7,4 @@ services:
     restart : always
     environment:
       - ORACLE_PASSWORD=pass
+    platform: linux/amd64

@@ -1,8 +1,8 @@
 package com.shop.controller.communityController;
 
 
-import com.shop.entity.cummunityEntity.Post;
-import com.shop.service.communityService.CommentService;
+import com.shop.entity.cummunityEntity.CommunityPost;
+import com.shop.service.communityService.CommunityPostCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,12 +15,12 @@ import java.util.List;
 public class CommunityCommentController {
 
     @Autowired
-    private CommentService commentService;
+    private CommunityPostCommentService communityPostCommentService;
 
 
     @GetMapping("/comment")
-    public List<Post> findByComment(@RequestParam(value = "q")final String comment){
-        return commentService.findByComment(comment);
+    public List<CommunityPost> findByComment(@RequestParam(value = "q")final String comment){
+        return communityPostCommentService.findByComment(comment);
     }
 
 }

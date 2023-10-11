@@ -1,10 +1,11 @@
 package com.shop.entity.cummunityEntity;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "image")
-public class Image {
+public class CommunityImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +17,10 @@ public class Image {
     @Column
     private String imageSrc;
 
-    public Image() {
+    public CommunityImage() {
     }
 
-    public Image(Long id, Long postNumber, String imageSrc) {
+    public CommunityImage(Long id, Long postNumber, String imageSrc) {
         this.id = id;
         this.postNumber = postNumber;
         this.imageSrc = imageSrc;

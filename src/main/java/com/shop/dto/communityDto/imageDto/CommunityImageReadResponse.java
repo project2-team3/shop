@@ -7,15 +7,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ImageReadResponse {
+public class CommunityImageReadResponse {
     private Long id;
     private Long postNumber;
     private String imageSrc;
 
-    public ImageReadResponse() {
+    public CommunityImageReadResponse() {
     }
 
-    public ImageReadResponse(Long id, Long postNumber, String imageSrc) {
+    public CommunityImageReadResponse(Long id, Long postNumber, String imageSrc) {
         this.id = id;
         this.postNumber = postNumber;
         this.imageSrc = imageSrc;

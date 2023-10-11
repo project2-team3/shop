@@ -1,13 +1,13 @@
 package com.shop.service.communityService;
 
-import com.shop.dto.communityDto.postDto.PostCreateRequest;
-import com.shop.dto.communityDto.postDto.PostReadResponse;
-import com.shop.dto.communityDto.postDto.PostUpdateRequest;
+import com.shop.dto.communityDto.postDto.CommunityPostCreateRequest;
+import com.shop.dto.communityDto.postDto.CommunityPostReadResponse;
+import com.shop.dto.communityDto.postDto.CommunityPostUpdateRequest;
 import com.shop.entity.Member;
-import com.shop.entity.cummunityEntity.Post;
+import com.shop.entity.cummunityEntity.CommunityPost;
 import com.shop.repository.MemberRepository;
 import com.shop.repository.communityRepository.PostRepository;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PostService {
+public class CommunityPostService {
 
     @Autowired
     private PostRepository postRepository;
@@ -28,22 +28,22 @@ public class PostService {
     private MemberRepository memberRepository;
 
 
-    public List<PostReadResponse> getAll() { // Post내 정보를 모두 불러 오는 함수
+    public List<CommunityPostReadResponse> getAll() { // Post내 정보를 모두 불러 오는 함수
         return postRepository.findAll()
                 .stream()
-                .map(PostReadResponse::fromEntity)
+                .map(CommunityPostReadResponse::fromEntity)
                 .collect(Collectors.toList());
     }
 
-    public List<Post> findByTitle(final String title){
+    public List<CommunityPost> findByTitle(final String title){
         return postRepository.findByTitleContaining(title);
     }
 
-    public List<Post> findByContent(final String content){
+    public List<CommunityPost> findByContent(final String content){
         return postRepository.findByContentContaining(content);
     }
 
-    public List<Post> findByName(final String name){
+    public List<CommunityPost> findByName(final String name){
         Member member= memberRepository.findByname(name);
         if(member != null){
             Long memberId = member.getId();
@@ -52,8 +52,8 @@ public class PostService {
         return Collections.emptyList();
     }
 
-    public Long create(final PostCreateRequest c) {
-        Post p = new Post(
+    public Long create(final CommunityPostCreateRequest c) {
+        CommunityPost p = new CommunityPost(
                 c.getTitle(),
                 c.getContent(),
                 c.getMemberId(),
@@ -63,8 +63,8 @@ public class PostService {
         return postRepository.save(p).getId();
     }
 
-    public Long update(final PostUpdateRequest u) {
-        Post p = postRepository.getReferenceById(u.getId());
+    public Long update(final CommunityPostUpdateRequest u) {
+        CommunityPost p = postRepository.getReferenceById(u.getId());
         p.setTitle(u.getTitle());
         p.setContent(u.getContent());
         p.setMemberId(u.getMemberId());
@@ -75,7 +75,7 @@ public class PostService {
 
     public Long delete(final Long postId) {
         Long memberId = (Long) request.getAttribute("id");
-        Post p = postRepository.getReferenceById(postId);
+        CommunityPost p = postRepository.getReferenceById(postId);
         if (p.getMemberId() == memberId) {
             postRepository.delete(p);
         }

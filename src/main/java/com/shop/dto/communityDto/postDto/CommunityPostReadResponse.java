@@ -1,6 +1,6 @@
 package com.shop.dto.communityDto.postDto;
 
-import com.shop.entity.cummunityEntity.Post;
+import com.shop.entity.cummunityEntity.CommunityPost;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class PostReadResponse {
+public class CommunityPostReadResponse {
 
     private Long id;
     private String title;
@@ -20,8 +20,8 @@ public class PostReadResponse {
     private Long like;
     private Long views;
 
-    public static PostReadResponse fromEntity(Post p){
-        return new PostReadResponse(
+    public static CommunityPostReadResponse fromEntity(CommunityPost p){
+        return new CommunityPostReadResponse(
                 p.getId(),
                 p.getTitle(),
                 p.getContent(),
@@ -32,10 +32,10 @@ public class PostReadResponse {
         );
     }
 
-    public PostReadResponse() {
+    public CommunityPostReadResponse() {
     }
 
-    public PostReadResponse(Long id, String title, String content, Long memberId, LocalDateTime dataTime, Long like, Long views) {
+    public CommunityPostReadResponse(Long id, String title, String content, Long memberId, LocalDateTime dataTime, Long like, Long views) {
         this.id = id;
         this.title = title;
         this.content = content;

@@ -1,16 +1,16 @@
 package com.shop.repository.communityRepository;
 
-import com.shop.entity.cummunityEntity.Post;
+import com.shop.entity.cummunityEntity.CommunityPost;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Post> findByTitleContaining(String s);
-    List<Post> findByContentContaining(String s);
-    List<Post> findByMemberId(Long along );
+public interface PostRepository extends JpaRepository<CommunityPost, Long> {
+    List<CommunityPost> findByTitleContaining(String s);
+    List<CommunityPost> findByContentContaining(String s);
+    List<CommunityPost> findByMemberId(Long along );
 
-    List<Post> findByIdIn(List<Long> ids);
+    List<CommunityPost> findByIdIn(List<Long> ids);
 }

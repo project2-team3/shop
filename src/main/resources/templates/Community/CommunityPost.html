@@ -12,7 +12,7 @@
             margin: 0 auto;
             padding: 20px;
         }
-        .post {
+        .communityPost {
             border: 1px solid #ddd;
             margin-bottom: 20px;
             padding: 10px;
@@ -31,7 +31,7 @@
     </form>
 
     <!-- 게시물 목록 -->
-    <div id="posts">
+    <div id="communityPosts">
         <!-- 여기에 게시물이 동적으로 추가될 것입니다. -->
     </div>
 </div>
@@ -41,10 +41,10 @@
     const postForm = document.getElementById('postForm');
     const authorInput = document.getElementById('author');
     const contentInput = document.getElementById('content');
-    const postsDiv = document.getElementById('posts');
+    const postsDiv = document.getElementById('communityPosts');
 
     // 게시물 목록을 저장할 배열
-    const posts = [];
+    const communityPosts = [];
 
     postForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -54,7 +54,7 @@
 
         // 실제 서버로 게시물을 보내는 AJAX 요청을 수행해야 하지만
         // 이 예제에서는 배열에 추가하고 화면에 표시합니다.
-        posts.push({ author, content });
+        communityPosts.push({ author, content });
         displayPosts();
 
         // 게시물 입력 폼 초기화
@@ -65,10 +65,10 @@
     function displayPosts() {
         postsDiv.innerHTML = '';
 
-        posts.forEach((post, index) => {
+        communityPosts.forEach((communityPost, index) => {
             const postElement = document.createElement('div');
-            postElement.className = 'post';
-            postElement.innerHTML = `<h3>${post.author}</h3><p>${post.content}</p>`;
+            postElement.className = 'communityPost';
+            postElement.innerHTML = `<h3>${communityPost.author}</h3><p>${communityPost.content}</p>`;
             postsDiv.appendChild(postElement);
         });
     }

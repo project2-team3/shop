@@ -1,6 +1,6 @@
 package com.shop.dto.communityDto.commentDto;
 
-import com.shop.entity.cummunityEntity.Post;
+import com.shop.entity.cummunityEntity.CommunityPost;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,24 +11,24 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 
-public class CommentCreateRequest {
+public class CommunityPostCommentCreateRequest {
 
     private Long id;
     private Long postId;
     private String UserName;
     private String commentContent;
     private LocalDateTime dateTime;
-    private Post post;
+    private CommunityPost communityPost;
 
-    public CommentCreateRequest() {
+    public CommunityPostCommentCreateRequest() {
     }
 
-    public CommentCreateRequest(Long id, Long postId, String userName, String commentContent, LocalDateTime dateTime, Post post) {
+    public CommunityPostCommentCreateRequest(Long id, Long postId, String userName, String commentContent, LocalDateTime dateTime, CommunityPost communityPost) {
         this.id = id;
         this.postId = postId;
         UserName = userName;
         this.commentContent = commentContent;
         this.dateTime = dateTime;
-        this.post = post;
+        this.communityPost = communityPost;
     }
 }

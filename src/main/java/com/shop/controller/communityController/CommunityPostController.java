@@ -1,10 +1,10 @@
 package com.shop.controller.communityController;
 
-import com.shop.dto.communityDto.postDto.PostCreateRequest;
-import com.shop.dto.communityDto.postDto.PostReadResponse;
-import com.shop.dto.communityDto.postDto.PostUpdateRequest;
-import com.shop.entity.cummunityEntity.Post;
-import com.shop.service.communityService.PostService;
+import com.shop.dto.communityDto.postDto.CommunityPostCreateRequest;
+import com.shop.dto.communityDto.postDto.CommunityPostReadResponse;
+import com.shop.dto.communityDto.postDto.CommunityPostUpdateRequest;
+import com.shop.entity.cummunityEntity.CommunityPost;
+import com.shop.service.communityService.CommunityPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,41 +15,41 @@ import java.util.List;
 public class CommunityPostController {
 
     @Autowired
-    private PostService postService;
+    private CommunityPostService communityPostService;
 
     @GetMapping("/")
-    public List<PostReadResponse> AllPost(){
-        return postService.getAll();
+    public List<CommunityPostReadResponse> AllPost(){
+        return communityPostService.getAll();
     }
 
     @GetMapping("/title-page")
-    public List<Post> findByTitle (@RequestParam(value = "q")final String title){
-        return postService.findByTitle(title);
+    public List<CommunityPost> findByTitle (@RequestParam(value = "q")final String title){
+        return communityPostService.findByTitle(title);
     }
 
     @GetMapping("/content-page")
-    public List<Post> findByContent (@RequestParam(value = "q") final String content){
-        return postService.findByContent(content);
+    public List<CommunityPost> findByContent (@RequestParam(value = "q") final String content){
+        return communityPostService.findByContent(content);
     }
 
     @GetMapping("/member-page")
-    public List<Post> findByName (@RequestParam(value = "q")final String name){
-        return postService.findByName(name);
+    public List<CommunityPost> findByName (@RequestParam(value = "q")final String name){
+        return communityPostService.findByName(name);
     }
 
     @PostMapping("/write")
-    public Long createPost(@RequestBody PostCreateRequest c){
-        return postService.create(c);
+    public Long createPost(@RequestBody CommunityPostCreateRequest c){
+        return communityPostService.create(c);
     }
 
     @PutMapping("/update")
-    public Long updatePost(@RequestBody PostUpdateRequest u){
-        return postService.update(u);
+    public Long updatePost(@RequestBody CommunityPostUpdateRequest u){
+        return communityPostService.update(u);
     }
 
     @DeleteMapping("/del/{postId}")
     public Long deletePost(@PathVariable(value = "postId") Long postId){
-        return postService.delete(postId);
+        return communityPostService.delete(postId);
     }
 
 }

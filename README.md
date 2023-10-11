@@ -3,7 +3,7 @@
   - 스프링부트 3.1.1 버전으로 업데이트
   - 스프링부트3 버전부터는 자바 17버전 이상을 사용해야합니다.
   - pom.xml 버전 정보가 많이 바뀌었습니다. 최신 pom.xml 버전을 참고해주세요
-  - javax에서 jakarta로 변경됨에 따라서 많은 import 들이 jakarta로 수정되었습니다.
+  - javax에서 javax로 변경됨에 따라서 많은 import 들이 jakarta로 수정되었습니다.
     - javax.validation => jakarta.validation
     - javax.persistence => jakarta.persistence
     - CustomAuthenticationEntryPoint.java (javax.servlet => jakarta.servlet)

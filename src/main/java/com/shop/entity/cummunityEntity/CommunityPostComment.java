@@ -1,6 +1,6 @@
 package com.shop.entity.cummunityEntity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Comment {
+public class CommunityPostComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,18 +32,18 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Post post;
+    private CommunityPost communityPost;
 
 
-    public Comment() {
+    public CommunityPostComment() {
     }
 
-    public Comment(Long id, Long postNumber, String userName, String commentContent, LocalDateTime dateTime, Post post) {
+    public CommunityPostComment(Long id, Long postNumber, String userName, String commentContent, LocalDateTime dateTime, CommunityPost communityPost) {
         this.id = id;
         this.postNumber = postNumber;
         this.userName = userName;
         this.commentContent = commentContent;
         this.dateTime = dateTime;
-        this.post = post;
+        this.communityPost = communityPost;
     }
 }

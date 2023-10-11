@@ -1,8 +1,8 @@
 package com.shop.service.communityService;
 
-import com.shop.dto.communityDto.PostCreateRequest;
-import com.shop.dto.communityDto.PostReadResponse;
-import com.shop.dto.communityDto.PostUpdateRequest;
+import com.shop.dto.communityDto.postDto.PostCreateRequest;
+import com.shop.dto.communityDto.postDto.PostReadResponse;
+import com.shop.dto.communityDto.postDto.PostUpdateRequest;
 import com.shop.entity.Member;
 import com.shop.entity.cummunityEntity.Post;
 import com.shop.repository.MemberRepository;

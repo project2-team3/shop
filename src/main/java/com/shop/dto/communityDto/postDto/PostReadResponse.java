@@ -1,4 +1,4 @@
-package com.shop.dto.communityDto;
+package com.shop.dto.communityDto.postDto;
 
 import com.shop.entity.cummunityEntity.Post;
 import lombok.Getter;

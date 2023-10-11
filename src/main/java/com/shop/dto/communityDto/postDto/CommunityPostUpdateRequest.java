@@ -13,18 +13,18 @@ public class CommunityPostUpdateRequest {
     private String title;
     private String content;
     private Long memberId;
-    private Long like;
+    private Long likeHeart;
     private Long views;
 
     public CommunityPostUpdateRequest() {
     }
 
-    public CommunityPostUpdateRequest(Long id, String title, String content, Long memberId, Long like, Long views) {
+    public CommunityPostUpdateRequest(Long id, String title, String content, Long memberId, Long likeHeart, Long views) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.memberId = memberId;
-        this.like = like;
+        this.likeHeart = likeHeart;
         this.views = views;
     }
 }

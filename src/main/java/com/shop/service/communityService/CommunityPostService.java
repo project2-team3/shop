@@ -6,7 +6,7 @@ import com.shop.dto.communityDto.postDto.CommunityPostUpdateRequest;
 import com.shop.entity.Member;
 import com.shop.entity.cummunityEntity.CommunityPost;
 import com.shop.repository.MemberRepository;
-import com.shop.repository.communityRepository.PostRepository;
+import com.shop.repository.communityRepository.CommunityPostRepository;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class CommunityPostService {
 
     @Autowired
-    private PostRepository postRepository;
+    private CommunityPostRepository communityPostRepository;
 
     @Autowired
     private HttpServletRequest request;
@@ -29,25 +29,25 @@ public class CommunityPostService {
 
 
     public List<CommunityPostReadResponse> getAll() { // Post내 정보를 모두 불러 오는 함수
-        return postRepository.findAll()
+        return communityPostRepository.findAll()
                 .stream()
                 .map(CommunityPostReadResponse::fromEntity)
                 .collect(Collectors.toList());
     }
 
     public List<CommunityPost> findByTitle(final String title){
-        return postRepository.findByTitleContaining(title);
+        return communityPostRepository.findByTitleContaining(title);
     }
 
     public List<CommunityPost> findByContent(final String content){
-        return postRepository.findByContentContaining(content);
+        return communityPostRepository.findByContentContaining(content);
     }
 
     public List<CommunityPost> findByName(final String name){
         Member member= memberRepository.findByname(name);
         if(member != null){
             Long memberId = member.getId();
-            return postRepository.findByMemberId(memberId);
+            return communityPostRepository.findByMemberId(memberId);
         }
         return Collections.emptyList();
     }
@@ -58,26 +58,26 @@ public class CommunityPostService {
                 c.getContent(),
                 c.getMemberId(),
                 c.getDateTime(),
-                c.getLike(),
+                c.getLikeHeart(),
                 c.getViews());
-        return postRepository.save(p).getId();
+        return communityPostRepository.save(p).getId();
     }
 
     public Long update(final CommunityPostUpdateRequest u) {
-        CommunityPost p = postRepository.getReferenceById(u.getId());
+        CommunityPost p = communityPostRepository.getReferenceById(u.getId());
         p.setTitle(u.getTitle());
         p.setContent(u.getContent());
         p.setMemberId(u.getMemberId());
-        p.setLike(u.getLike());
+        p.setLikeHeart(u.getLikeHeart());
         p.setViews(u.getViews());
         return p.getId();
     }
 
     public Long delete(final Long postId) {
         Long memberId = (Long) request.getAttribute("id");
-        CommunityPost p = postRepository.getReferenceById(postId);
+        CommunityPost p = communityPostRepository.getReferenceById(postId);
         if (p.getMemberId() == memberId) {
-            postRepository.delete(p);
+            communityPostRepository.delete(p);
         }
         return p.getId();
     }

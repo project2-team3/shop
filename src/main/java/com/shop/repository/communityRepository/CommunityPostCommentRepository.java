@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CommentRepository extends JpaRepository<CommunityPostComment, Long> {
+public interface CommunityPostCommentRepository extends JpaRepository<CommunityPostComment, Long> {
 
     List<CommunityPostComment> findByCommentContentContaining(String s);
 

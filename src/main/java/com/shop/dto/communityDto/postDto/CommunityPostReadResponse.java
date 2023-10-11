@@ -17,7 +17,7 @@ public class CommunityPostReadResponse {
     private String content;
     private Long memberId;
     private LocalDateTime dataTime;
-    private Long like;
+    private Long likeHeart;
     private Long views;
 
     public static CommunityPostReadResponse fromEntity(CommunityPost p){
@@ -27,7 +27,7 @@ public class CommunityPostReadResponse {
                 p.getContent(),
                 p.getMemberId(),
                 p.getDateTime(),
-                p.getLike(),
+                p.getLikeHeart(),
                 p.getViews()
         );
     }
@@ -35,13 +35,13 @@ public class CommunityPostReadResponse {
     public CommunityPostReadResponse() {
     }
 
-    public CommunityPostReadResponse(Long id, String title, String content, Long memberId, LocalDateTime dataTime, Long like, Long views) {
+    public CommunityPostReadResponse(Long id, String title, String content, Long memberId, LocalDateTime dataTime, Long likeHeart, Long views) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.memberId = memberId;
         this.dataTime = dataTime;
-        this.like = like;
+        this.likeHeart = likeHeart;
         this.views = views;
     }
 }

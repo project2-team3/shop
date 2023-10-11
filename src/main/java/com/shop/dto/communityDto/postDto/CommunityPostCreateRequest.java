@@ -15,7 +15,7 @@ public class CommunityPostCreateRequest {
     private String content;
     private Long memberId;
     private LocalDateTime dateTime;
-    private Long like;
+    private Long likeHeart;
     private Long views;
 
 }

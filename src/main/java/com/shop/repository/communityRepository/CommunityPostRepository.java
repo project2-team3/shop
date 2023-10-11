@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PostRepository extends JpaRepository<CommunityPost, Long> {
+public interface CommunityPostRepository extends JpaRepository<CommunityPost, Long> {
     List<CommunityPost> findByTitleContaining(String s);
     List<CommunityPost> findByContentContaining(String s);
     List<CommunityPost> findByMemberId(Long along );

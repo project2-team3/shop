@@ -13,9 +13,15 @@ public class Image {
     @Column(nullable = false)
     private Long postNumber;
 
-    @Column(nullable = false)
+    @Column
     private String imageSrc;
 
+    public Image() {
+    }
 
-
+    public Image(Long id, Long postNumber, String imageSrc) {
+        this.id = id;
+        this.postNumber = postNumber;
+        this.imageSrc = imageSrc;
+    }
 }

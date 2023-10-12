@@ -60,6 +60,7 @@ public class CommunityPostService {
                 c.getDateTime(),
                 c.getLikeHeart(),
                 c.getViews());
+
         return communityPostRepository.save(p).getId();
     }
 

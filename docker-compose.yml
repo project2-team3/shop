@@ -4,7 +4,6 @@ services:
     image: gvenzl/oracle-xe:latest
     ports:
       - 49160:1521
-    restart : always
     environment:
       - ORACLE_PASSWORD=pass
     platform: linux/amd64

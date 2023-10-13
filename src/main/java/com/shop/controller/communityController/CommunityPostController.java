@@ -4,7 +4,9 @@ import com.shop.dto.communityDto.postDto.CommunityPostCreateRequest;
 import com.shop.dto.communityDto.postDto.CommunityPostReadResponse;
 import com.shop.dto.communityDto.postDto.CommunityPostUpdateRequest;
 import com.shop.entity.cummunityEntity.CommunityPost;
+import com.shop.service.communityService.CommunityPostLikeService;
 import com.shop.service.communityService.CommunityPostService;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,37 +20,37 @@ public class CommunityPostController {
     private CommunityPostService communityPostService;
 
     @GetMapping("/")
-    public List<CommunityPostReadResponse> AllPost(){
+    public List<CommunityPostReadResponse> AllPost() {
         return communityPostService.getAll();
     }
 
     @GetMapping("/title-page")
-    public List<CommunityPost> findByTitle (@RequestParam(value = "q")final String title){
+    public List<CommunityPost> findByTitle(@RequestParam(value = "q") final String title) {
         return communityPostService.findByTitle(title);
     }
 
     @GetMapping("/content-page")
-    public List<CommunityPost> findByContent (@RequestParam(value = "q") final String content){
+    public List<CommunityPost> findByContent(@RequestParam(value = "q") final String content) {
         return communityPostService.findByContent(content);
     }
 
     @GetMapping("/member-page")
-    public List<CommunityPost> findByName (@RequestParam(value = "q")final String name){
+    public List<CommunityPost> findByName(@RequestParam(value = "q") final String name) {
         return communityPostService.findByName(name);
     }
 
     @PostMapping("/write")
-    public Long createPost(@RequestBody CommunityPostCreateRequest c){
+    public Long createPost(@RequestBody CommunityPostCreateRequest c) {
         return communityPostService.create(c);
     }
 
     @PutMapping("/update")
-    public Long updatePost(@RequestBody CommunityPostUpdateRequest u){
+    public Long updatePost(@RequestBody CommunityPostUpdateRequest u) {
         return communityPostService.update(u);
     }
 
     @DeleteMapping("/del/{postId}")
-    public Long deletePost(@PathVariable(value = "postId") Long postId){
+    public Long deletePost(@PathVariable(value = "postId") Long postId) {
         return communityPostService.delete(postId);
     }
 

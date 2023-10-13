@@ -11,6 +11,6 @@ public interface CommunityPostRepository extends JpaRepository<CommunityPost, Lo
     List<CommunityPost> findByTitleContaining(String s);
     List<CommunityPost> findByContentContaining(String s);
     List<CommunityPost> findByMemberId(Long along );
-
+    List<CommunityPost> findByLikeHeart(Long aLong);
     List<CommunityPost> findByIdIn(List<Long> ids);
 }
